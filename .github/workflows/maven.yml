@@ -43,7 +43,17 @@ jobs:
       # - name: Restart application on EC2
       #   run: sudo systemctl stop tu-aplicacion.service && sudo systemctl start tu-aplicacion.service
             
+      - name: Add EC2 instance to known_hosts
+        run: ssh-keyscan -H 18.118.33.179 >> ~/.ssh/known_hosts
+
+      - name: Add SSH key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-add ~/.ssh/id_rsa
 
       - name: Restart application on EC2
-        run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@18.118.33.179 "sudo systemctl stop tu-aplicacion.service && sudo systemctl start tu-aplicacion.service"
+        run: ssh ubuntu@18.118.33.179 "sudo systemctl stop tu-aplicacion.service && sudo systemctl start tu-aplicacion.service"
