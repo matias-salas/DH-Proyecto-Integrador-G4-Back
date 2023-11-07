@@ -31,14 +31,13 @@ jobs:
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/digitalcars:latest
 
-      - name: Pull Docker image
-        run: docker pull ${{ secrets.DOCKER_USERNAME }}/digitalcars:latest
-
-      - name: Delete old Docker container
-        run: docker rm -f digitalcars-container || true
-
-      - name: Run Docker container
-        run: docker run -d -p 8080:8080 --name digitalcars-container ${{ secrets.DOCKER_USERNAME }}/digitalcars:latest
-
-
-        
+      # Este es el nuevo paso que añades para manejar el despliegue en EC2
+      - name: SSH and deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKER_USERNAME }}/digitalcars:latest
+            docker-compose -f /home/ubuntu/actions-runner/_work/DH-Proyecto-Integrador-G4-Back/DH-Proyecto-Integrador-G4-Back/docker-compose.yml up -d
