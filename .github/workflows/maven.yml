@@ -40,6 +40,10 @@ jobs:
         with:
           token: ${{ secrets.YOUR_PAT_SECRET }}
 
-      - name: Restart application on EC2
-        run: sudo systemctl stop tu-aplicacion.service && sudo systemctl start tu-aplicacion.service
+      # - name: Restart application on EC2
+      #   run: sudo systemctl stop tu-aplicacion.service && sudo systemctl start tu-aplicacion.service
             
+
+      # - name: Restart application on EC2
+      #   run: |
+      #     ssh -o StrictHostKeyChecking=no ubuntu@18.118.33.179 "sudo systemctl stop tu-aplicacion.service && sudo systemctl start tu-aplicacion.service"
