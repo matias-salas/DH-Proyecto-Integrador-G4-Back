@@ -31,7 +31,17 @@ jobs:
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/digitalcars:latest
 
-      # Este es el nuevo paso que añades para manejar el despliegue en EC2
+      # Nuevo paso para detener y eliminar contenedores existentes antes de desplegar
+      - name: SSH to EC2 and clean up
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            docker-compose -f /home/ubuntu/actions-runner/_work/DH-Proyecto-Integrador-G4-Back/DH-Proyecto-Integrador-G4-Back/docker-compose.yml down
+            docker rm -f $(docker ps -aq) || true # Elimina todos los contenedores
+
       - name: SSH and deploy to EC2
         uses: appleboy/ssh-action@master
         with:
