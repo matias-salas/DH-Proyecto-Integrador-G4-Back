@@ -39,3 +39,6 @@ jobs:
 
       - name: Run Docker container
         run: docker run -d -p 8080:8080 --name digitalcars-container ${{ secrets.DOCKER_USERNAME }}/digitalcars:latest
+
+
+        
