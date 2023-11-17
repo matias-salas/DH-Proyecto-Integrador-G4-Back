@@ -7,11 +7,9 @@ import com.TPI.DigitalCars.repository.security.UserRepository;
 import com.TPI.DigitalCars.service.security.AppUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -44,6 +42,16 @@ public class UserController {
             throw new ResourceNotFoundException("No se encuentra id: "+id+" en la base de datos");
             //return ResponseEntity.notFound().build();
         }
+    }
+    @PostMapping("/registro")
+    public ResponseEntity<AppUsuario> registrarUsuario(@RequestBody AppUsuario nuevoUsuario) {
+        AppUsuario usuarioRegistrado = appUsuarioService.guardarUsuario(nuevoUsuario);
+        return ResponseEntity.ok(usuarioRegistrado);
+    }
+    @GetMapping("/listar")
+    public ResponseEntity<List<AppUsuario>> listarUsuarios() {
+        List<AppUsuario> usuarios = appUsuarioService.listarUsuarios();
+        return ResponseEntity.ok(usuarios);
     }
 
 }
