@@ -34,6 +34,14 @@ public class CarController {
         return ResponseEntity.ok(carService.guardarCar(carDTO));
     }
 
+    @PutMapping
+    public ResponseEntity<Car> modificarAuto(@RequestBody CarDTO carDTO) {
+        System.out.println("inicio carDTO ------------ ---- ------ ------------");
+        System.out.println(carDTO.toString());
+        System.out.println("fin carDTO ------------ ---- ------ ------------");
+        return ResponseEntity.ok(carService.modificarCar(carDTO));
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional> getCarById(@PathVariable Long id) {

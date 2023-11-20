@@ -2,11 +2,9 @@ package com.TPI.DigitalCars.service;
 
 
 import com.TPI.DigitalCars.dto.CarDTO;
-import com.TPI.DigitalCars.dto.CategoryDTO;
 import com.TPI.DigitalCars.exceptions.BadRequestException;
 import com.TPI.DigitalCars.exceptions.ResourceNotFoundException;
 import com.TPI.DigitalCars.model.Car;
-import com.TPI.DigitalCars.model.Category;
 import com.TPI.DigitalCars.model.Imagen;
 import com.TPI.DigitalCars.repository.CarRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,6 +42,8 @@ public class CarService {
     }
 
 
+
+
     public Car actualizarCar (Car car)throws BadRequestException {
 
         if (buscarCar(car.getId()).isPresent()){
@@ -54,6 +53,27 @@ public class CarService {
         }
 
     }
+
+    public Car modificarCar(CarDTO carDTO) {
+        Optional<Car> optionalCar = CarRepository.findById(carDTO.getId());
+        if (optionalCar.isPresent()) {
+            Car car = optionalCar.get();
+            car.setMarca(carDTO.getMarca());
+            car.setAnioModelo(carDTO.getAnioModelo());
+            car.setCategories(carDTO.getCategories());
+            car.setImagenes(carDTO.getImagenes());
+            car.setMotorCode(carDTO.getMotorCode());
+            car.setPatente(carDTO.getPatente());
+
+            // Asegúrate de actualizar todos los campos necesarios aquí
+            CarRepository.save(car);
+            return car;
+        } else {
+            throw new RuntimeException("No se encontro un auto con ese id: " + carDTO.getId());
+        }
+    }
+
+
 
 
 
