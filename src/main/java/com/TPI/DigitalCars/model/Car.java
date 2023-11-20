@@ -52,7 +52,7 @@ public class Car {
      */
 
     // Agregar la propiedad imagenes como una lista de imagen
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Imagen> imagenes;
 
     private List<String> categories;
