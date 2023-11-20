@@ -3,6 +3,7 @@ package com.TPI.DigitalCars.controller;
 
 import com.TPI.DigitalCars.dto.CarDTO;
 import com.TPI.DigitalCars.exceptions.BadRequestException;
+import com.TPI.DigitalCars.exceptions.ResourceNotFoundException;
 import com.TPI.DigitalCars.model.Car;
 import com.TPI.DigitalCars.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,14 @@ public class CarController {
         System.out.println(car);
         return ResponseEntity.ok().body(car);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteCarById(@PathVariable Long id) throws ResourceNotFoundException {
+        carService.eliminarCar(id);
+        return ResponseEntity.ok().build();
+    }
+
+
 
     /*
     @PostMapping("/crear")
