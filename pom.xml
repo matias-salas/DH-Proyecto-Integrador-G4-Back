@@ -48,10 +48,10 @@
 			<version>8.0.28</version> <!-- Debes especificar la versión que desees -->
 		</dependency>
 <!--												&lt;!&ndash;SEGURIDAD &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-security</artifactId>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 
 <!--		<dependency>-->
 <!--			<groupId>org.postgresql</groupId>-->

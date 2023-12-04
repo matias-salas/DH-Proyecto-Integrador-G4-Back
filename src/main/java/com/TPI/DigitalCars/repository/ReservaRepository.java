@@ -14,4 +14,7 @@ public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 
     List<Reserva> findByCarIdAndFechaInicioBetween(Long carid, LocalDate inicio, LocalDate fin);
 
+    List<Reserva> findByCarIdAndFechaInicioLessThanEqualAndFechaFinalGreaterThanEqual(Long carId, LocalDate fechaInicio, LocalDate fechaFin);
+
+
 }

@@ -59,7 +59,7 @@ public class CarController {
 
 
     /*
-    @PostMapping("/crear")
+    @PostMapping("/crear-producto")
     public ResponseEntity<?> guardarPaciente(@RequestBody Car car){
         carService.guardarCar(car);
         return ResponseEntity.ok(HttpStatus.OK);

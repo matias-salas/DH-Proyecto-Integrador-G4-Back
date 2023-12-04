@@ -2,8 +2,10 @@ package com.TPI.DigitalCars.service;
 
 
 import com.TPI.DigitalCars.model.Car;
+import com.TPI.DigitalCars.model.Reserva;
 import com.TPI.DigitalCars.repository.CarRepository;
 import com.TPI.DigitalCars.repository.ReservaRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,8 +55,21 @@ public class ReservaService {
 
     // Método para obtener un rango de fechas entre dos fechas dadas (inclusive)
     private List<LocalDate> obtenerRangoDeFechas(LocalDate inicio, LocalDate fin) {
-        return inicio.datesUntil(fin.plusDays(1)).collect(Collectors.toList());
+        return inicio.datesUntil(fin.plusDays(1)).collect(Collectors.toList());}
+
+    // guardar reserva
+
+    public Reserva guardarReserva(Reserva reserva){ return reservaRepository.save(reserva);}
+
+    //buscar fechas disponibles para un auto en particular
+
+    public List<Reserva> findByCarIdAndFechaInicioLessThanEqualAndFechaFinalGreaterThanEqual(Long carId, LocalDate fechaInicio, LocalDate fechaFin) {
+        return reservaRepository.findByCarIdAndFechaInicioLessThanEqualAndFechaFinalGreaterThanEqual(carId, fechaInicio, fechaFin);
     }
 
-    // crear reserva
+    //listar reservas
+
+
+
+    public List<Reserva> listarReservas(){ return reservaRepository.findAll();}
 }
