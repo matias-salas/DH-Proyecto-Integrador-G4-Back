@@ -16,22 +16,14 @@ import java.util.Optional;
 @RequestMapping("/user")
 public class UserController {
 
-
-
     @Autowired
     UserRepository userRepository;
-
     private AppUsuarioService appUsuarioService;
-
 
     @Autowired
     public UserController(AppUsuarioService appUsuarioService) {
         this.appUsuarioService = appUsuarioService;
     }
-
-    //traer datos de usuario
-
-
 
     @GetMapping("/{id}")
     public ResponseEntity<AppUsuario> buscarUsuarioPorID (@PathVariable Long id)throws ResourceNotFoundException {
@@ -40,7 +32,6 @@ public class UserController {
             return ResponseEntity.ok(userBuscado.get());
         }else{
             throw new ResourceNotFoundException("No se encuentra id: "+id+" en la base de datos");
-            //return ResponseEntity.notFound().build();
         }
     }
     @PostMapping("/registro")
