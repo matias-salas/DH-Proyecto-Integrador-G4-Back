@@ -53,17 +53,11 @@ public class SwaggerConfig implements WebMvcConfigurer {
 
     private ApiInfo apiInfo(){
         return new ApiInfo("Airc2c",
-                "Aplicación desarrollada para aplicar los conocimientos adquiridos a lo largo del primer track de la carrera de CTD. Este documento contiene toda la información para utilizar la API de Airc2c.\n" +
-                        "Grupo 9\n" +
-                        "   - Cardenas, Giovanny\n" +
-                        "   - Diaz, Cristian\n" +
-                        "   - De la Ossa, Martha\n" +
-                        "   - Gutierrez, Henry\n" +
-                        "   - Iójimo, Virginia \n" +
-                        "   - Justel, Carlos Ignacio",
+                "Aplicación desarrollada para aplicar los conocimientos adquiridos a lo largo del primer track de la carrera de CTD. Este documento contiene toda la información para utilizar la API.\n" +
+                        "Grupo 4\n",
                 "V.0.0.1",
                 "Terms of service",
-                new Contact("Airc2c", "http://0521ptc2n2-grupo4-airc2cfronts3.s3-website.us-east-2.amazonaws.com/","airc2c@gmail.com"),
+                new Contact("BakcEnd", "http://ec2-3-142-200-91.us-east-2.compute.amazonaws.com:8080","matiasezequielsalas@gmail.com"),
                 "Licencia",
                 "licencia.com",
                 Collections.emptyList());
