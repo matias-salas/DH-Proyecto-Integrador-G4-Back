@@ -14,7 +14,7 @@ import java.util.Optional;
 @Api(tags="Cities")
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/cities")
+@RequestMapping("/transmission")
 public class TransmissionController {
 
     @Autowired
