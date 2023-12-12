@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@Api(tags="Cities")
+@Api(tags="Transmission")
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/transmission")
