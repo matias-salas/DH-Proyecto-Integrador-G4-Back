@@ -29,7 +29,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
                 .build()
                 .tags(new Tag("Products", "Product Controller"))
                 .tags(new Tag("Categories", "Category Controller"))
-                .tags(new Tag("Cities", "Transmission Controller"))
+                .tags(new Tag("Transmission & Fuel", "Transmission Controller"))
                 .tags(new Tag("Users", "User Controller"))
                 .tags(new Tag("Roles", "Role Controller"))
                 .tags(new Tag("Authentication", "Authentication Controller"))
