@@ -52,7 +52,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
     }
 
     private ApiInfo apiInfo(){
-        return new ApiInfo("Airc2c",
+        return new ApiInfo("DigitalCars",
                 "Aplicación desarrollada para aplicar los conocimientos adquiridos a lo largo del primer track de la carrera de CTD. Este documento contiene toda la información para utilizar la API.\n" +
                         "Grupo 4\n",
                 "V.0.0.1",

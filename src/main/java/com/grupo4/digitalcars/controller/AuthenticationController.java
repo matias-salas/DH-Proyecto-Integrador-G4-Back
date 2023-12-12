@@ -48,8 +48,8 @@ public class AuthenticationController {
         return ResponseEntity.ok(new AuthenticationDtoResponse((jwt), id, name, lastName, email, transmission, role));
     }
 
-    @RequestMapping({"/airc2c"})
+    @RequestMapping({"/DigitalCars"})
     public String hello() {
-        return "Welcome to Airc2c";
+        return "Welcome to DigitalCars";
     }
 }
