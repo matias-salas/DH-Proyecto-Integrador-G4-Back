@@ -51,4 +51,3 @@ jobs:
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/digitalcars:latest
             docker-compose -f /home/ubuntu/actions-runner/_work/DH-Proyecto-Integrador-G4-Back/DH-Proyecto-Integrador-G4-Back/docker-compose.yml up -d
-            List<Product> getProductsByCategoryAndKeyword(Category category, String keyword);
