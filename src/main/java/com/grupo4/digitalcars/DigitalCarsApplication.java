@@ -15,7 +15,7 @@ public class DigitalCarsApplication {
 		SpringApplication.run(DigitalCarsApplication.class, args);
 
 	}
-
+// asdasda
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
